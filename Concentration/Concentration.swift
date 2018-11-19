@@ -51,11 +51,15 @@ class Concentration
     
     init(numberOfPairsOfCards: Int) {
         assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
+        
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
         }
-        // TODO: Shuffle the cards
+        
+        for index in cards.indices {
+            cards.swapAt(index, cards.count.arc4random)
+        }
     }
     
 }
