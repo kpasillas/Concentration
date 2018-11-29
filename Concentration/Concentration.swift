@@ -12,6 +12,10 @@ class Concentration
 {
     private(set) var cards = [Card]()
     
+    private(set) var flipCount = 0
+    
+    private(set) var score = 0
+    
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex: Int?
@@ -35,6 +39,7 @@ class Concentration
     
     func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
+        flipCount += 1
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 // check if cards match
