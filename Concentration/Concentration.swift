@@ -46,7 +46,13 @@ class Concentration
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    score += 2
+                } else {
+                    if cards[index].hasBeenFlipped { score -= 1 }
+                    if cards[matchIndex].hasBeenFlipped { score -= 1 }
                 }
+                cards[index].hasBeenFlipped = true
+                cards[matchIndex].hasBeenFlipped = true
                 cards[index].isFaceUp = true
             } else {
                 indexOfOneAndOnlyFaceUpCard = index
